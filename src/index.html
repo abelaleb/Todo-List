@@ -3,17 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todos-list</title>
-    <script src="index.js" defer></script>
+    <title>Todos List</title>
   </head>
   <body>
     <header class="header">
-      <h1>Todos-list</h1>
+      <h1>Todos Lists</h1>
     </header>
-    <main class="container"></main>
-    <footer class="footer">
-      <p>Copyright © 2024 Abel A.</p>
-      <a href="https://github.com/abelaleb" target="_blank">
+    <div class="main">
+      <aside class="sidebar">
+        <h1>Main projects</h1>
+        <p>Inbox</p>
+        <p>Today</p>
+        <p>This week</p>
+      </aside>
+
+      <div class="container">
+        <button
+          id="addTodosBtn"
+          aria-haspopup="dialog"
+          aria-controls="TodosDialog"
+        >
+          Add a Todo
+        </button>
+
+        <section class="maincontents"></section>
+
+        <dialog id="TodosDialog" aria-labelledby="dialog-title">
+          <div class="dialog-content">
+            <div class="dialog-header">
+              <h2 id="dialog-title">Add a Task</h2>
+              <button id="closeDialogBtn" aria-label="Close dialog">
+                &times;
+              </button>
+            </div>
+
+            <form id="Todos-form">
+              <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required />
+              </div>
+
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="dueDate">Due Date:</label>
+                <input type="date" id="dueDate" name="dueDate" required />
+              </div>
+
+              <div class="form-group">
+                <label for="priority">Priority:</label>
+                <select id="priority" name="priority" required>
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+              </div>
+
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        </dialog>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2024 Abel A.</p>
+      <a
+        href="https://github.com/abelaleb"
+        target="_blank"
+        aria-label="GitHub profile"
+      >
         <i class="fab fa-github"></i>
       </a>
     </footer>

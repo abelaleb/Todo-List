@@ -1,17 +1,17 @@
 // UI.js
+import { deleteTask } from "./todo-list";
 export function renderTodos(todos) {
   const mainbar = document.querySelector(".maincontents");
   mainbar.innerHTML = "";
 
   todos.forEach((todo, index) => {
     const todoElement = document.createElement("div");
-    todoElement.classList.add("todo-item", todo.priority.toLowerCase());
+    todoElement.classList.add("todo-item",todo.priority.toLowerCase());
 
     todoElement.innerHTML = `
       <h3>${todo.title}</h3>
       <p>${todo.description}</p>
-      <p>Due: ${todo.date}</p>
-      <p>Priority: ${todo.priority}</p>
+      <p>${todo.date}</p>
       <button class="delete-btn" data-index="${index}">Delete</button>
     `;
 
@@ -35,3 +35,4 @@ export function openDialog(dialog) {
 export function closeDialog(dialog) {
   dialog.close();
 }
+

@@ -31,14 +31,12 @@ export const blankTodosListLoad = () => {
     storeTodos(todos);
     renderTodos(todos);
   }
-
-  function deleteTask(index) {
-    const todos = getStoredTodos();
-    todos.splice(index, 1);
-    storeTodos(todos);
-    renderTodos(todos);
-  }
-
+  // function deleteTask(index) {
+  //   const todos = getStoredTodos();
+  //   todos.splice(index, 1);
+  //   storeTodos(todos);
+  //   renderTodos(todos);
+  // }
   document.addEventListener("DOMContentLoaded", () => {
     initializeTodos();
 
@@ -60,3 +58,10 @@ export const blankTodosListLoad = () => {
     });
   });
 };
+
+export function deleteTask(index) {
+  const todos = JSON.parse(localStorage.getItem("todo-list") || "[]");
+  todos.splice(index, 1);
+  localStorage.setItem("todo-list", JSON.stringify(todos));
+  renderTodos(todos);
+}

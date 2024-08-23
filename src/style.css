@@ -4,6 +4,11 @@
   --header-bg-color: #1a5276; /* Updated color for header */
   --main-bg-color: #fff;
   --button-hover-bg: #f28b30;
+  --low-bg-clr: rgb(226, 253, 252);
+  --medium-bg-clr: #a3d694;
+  /* #91BF84 */
+  --high-bg-clr: #ebe683;
+  --urgent-bg-clr: lightpink;
   --font-color: #8c2e26;
   --font-family: "Arial", sans-serif;
   --primary-color: #4caf50;
@@ -80,21 +85,45 @@ body {
   margin: 20px;
   margin-left: 270px; /* Space for sidebar */
 }
+
 .maincontents {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-/* style.css */
+
+.todo-item.urgent {
+  border-left: 8px solid red;
+  background-color: var(--urgent-bg-clr);
+}
 .todo-item.high {
-  border-left: 4px solid red;
+  border-left: 8px solid orange;
+  background-color: var(--high-bg-clr);
 }
 
 .todo-item.medium {
-  border-left: 4px solid orange;
+  border-left: 8px solid green;
+  background-color: var(--medium-bg-clr);
 }
 
 .todo-item.low {
-  border-left: 4px solid green;
+  border-left: 8px solid lightblue;
+  background-color: var(--low-bg-clr);
 }
-
+.delete-btn {
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  font-size: var(--button-font-size);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.delete-btn:hover {
+  background-color: var(--button-hover-bg);
+}
 
 #addTodosBtn {
   align-self: flex-start;

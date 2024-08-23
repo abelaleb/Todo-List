@@ -22,12 +22,12 @@ export const blankProjectLoad = () => {
     const projects = getStoredProjects();
     const sidebar = document.querySelector(".sidecontents");
 
-    sidebar.innerHTML = "<h1>Todos Projects</h1>";
+    // sidebar.innerHTML = "<h1>Todos Projects</h1>";
 
     projects.forEach((project) => {
       const projectElement = document.createElement("p");
       projectElement.textContent = project;
-      sidebar.appendChild(projectElement);
+      // sidebar.appendChild(projectElement);
     });
   }
   document.addEventListener("DOMContentLoaded", () => {

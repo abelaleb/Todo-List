@@ -1,9 +1,6 @@
-import { renderTodos } from "./UI.js";
+import { renderTodos, openDialog, closeDialog } from "./UI.js";
 
 export const blankTodosListLoad = () => {
-  console.log("call todos-list load");
-
-  // Task constructor function
   function task(title, description, date, priority) {
     this.title = title;
     this.description = description;
@@ -22,27 +19,32 @@ export const blankTodosListLoad = () => {
   function initializeTodos() {
     const todos = getStoredTodos();
     if (todos.length === 0) {
-      const defaultTodos = []; // Define any default todos if needed
+      const defaultTodos = [];
       storeTodos(defaultTodos);
     }
+    renderTodos(todos);
   }
 
-  function addTaskToTodos(task) {
+  function addTaskToTodos(newTask) {
     const todos = getStoredTodos();
-    todos.push(task);
+    todos.push(newTask);
     storeTodos(todos);
-    renderTodos(todos); // Re-render the todos to display the new one
+    renderTodos(todos);
+  }
+
+  function deleteTask(index) {
+    const todos = getStoredTodos();
+    todos.splice(index, 1);
+    storeTodos(todos);
+    renderTodos(todos);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     initializeTodos();
-    const todos = getStoredTodos();
-    renderTodos(todos);
 
-    // Form submission handling
     const form = document.getElementById("Todos-form");
     form.addEventListener("submit", (event) => {
-      event.preventDefault(); // Prevent form from submitting the traditional way
+      event.preventDefault();
 
       const title = document.getElementById("title").value;
       const description = document.getElementById("description").value;
@@ -52,18 +54,9 @@ export const blankTodosListLoad = () => {
       const newTask = new task(title, description, date, priority);
       addTaskToTodos(newTask);
 
-      // Close the dialog after adding the task
       const dialog = document.getElementById("TodosDialog");
-      dialog.close();
-
-      // Clear the form fields
+      closeDialog(dialog);
       form.reset();
     });
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    initializeTodos();
-    const todos = getStoredTodos();
-    renderTodos(todos);
   });
 };

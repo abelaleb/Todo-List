@@ -80,6 +80,21 @@ body {
   margin: 20px;
   margin-left: 270px; /* Space for sidebar */
 }
+.maincontents {
+}
+/* style.css */
+.todo-item.high {
+  border-left: 4px solid red;
+}
+
+.todo-item.medium {
+  border-left: 4px solid orange;
+}
+
+.todo-item.low {
+  border-left: 4px solid green;
+}
+
 
 #addTodosBtn {
   align-self: flex-start;

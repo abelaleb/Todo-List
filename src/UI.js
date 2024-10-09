@@ -4,6 +4,13 @@ export function renderTodos(todos) {
   const mainbar = document.querySelector(".maincontents");
   mainbar.innerHTML = "";
 
+  const priorityOrder ={
+    urgent:1,
+    high: 2,
+    medium:3,
+    low:4,
+  }
+  todos.sort((a,b)=>priorityOrder[a.priority]-priorityOrder[b.priority])
   todos.forEach((todo, index) => {
     const todoElement = document.createElement("div");
     todoElement.classList.add("todo-item",todo.priority.toLowerCase());

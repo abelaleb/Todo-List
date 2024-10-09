@@ -12,6 +12,7 @@ export const blankTodosListLoad = () => {
     return JSON.parse(localStorage.getItem("todo-list") || "[]");
   }
 
+
   function storeTodos(todos) {
     localStorage.setItem("todo-list", JSON.stringify(todos));
   }
@@ -31,12 +32,7 @@ export const blankTodosListLoad = () => {
     storeTodos(todos);
     renderTodos(todos);
   }
-  // function deleteTask(index) {
-  //   const todos = getStoredTodos();
-  //   todos.splice(index, 1);
-  //   storeTodos(todos);
-  //   renderTodos(todos);
-  // }
+
   document.addEventListener("DOMContentLoaded", () => {
     initializeTodos();
 

@@ -1,7 +1,6 @@
 export const blankProjectLoad = () => {
-  console.log("Called blankproject");
-
   const defaultProjects = ["Personal", "Work", "Home"];
+  console.log(defaultProjects);
 
   function getStoredProjects() {
     return JSON.parse(localStorage.getItem("projects")) || [];
@@ -20,16 +19,19 @@ export const blankProjectLoad = () => {
 
   function renderProjects() {
     const projects = getStoredProjects();
-    const sidebar = document.querySelector(".sidecontents");
-
-    // sidebar.innerHTML = "<h1>Todos Projects</h1>";
-
+    const projectDropdown = document.getElementById("projectDropdown");
+  
+    // Clear existing options
+    projectDropdown.innerHTML = "";
+  
     projects.forEach((project) => {
-      const projectElement = document.createElement("p");
-      projectElement.textContent = project;
-      // sidebar.appendChild(projectElement);
+      const optionElement = document.createElement("option");
+      optionElement.textContent = project;
+      optionElement.value = project;
+      projectDropdown.appendChild(optionElement);
     });
   }
+  
   document.addEventListener("DOMContentLoaded", () => {
     initializeProjects();
     renderProjects();

@@ -4,17 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todos List</title>
-  <script defer src="main.js"></script></head>
+    <link rel="icon" href="src/images/to-do-list.png" />
+    <link rel="stylesheet" href="" />
+  <link rel="icon" href="to-do-list.png"><script defer src="main.js"></script></head>
   <body>
     <header class="header">
+      <div class="todos-logo"></div>
       <h1>Todos Lists</h1>
     </header>
     <div class="main">
       <aside class="sidebar">
-        <h1>Main projects</h1>
-        <p>Inbox</p>
-        <p>Today</p>
-        <p>This week</p>
+        <p id="inbox" onclick="initializeTodos('Inbox')">Inbox</p>
+        <p id="today" onclick="initializeTodos('Today')">Today</p>
+        <p id="this-week" onclick="initializeTodos('This Week')">This Week</p>
+
+        <div class="main-project">
+          <h1>Main Projects</h1>
+          <button
+            id="addProjectsBtn"
+            aria-haspopup="dialog"
+            aria-controls="ProjectsDialog"
+          >
+            Add project
+          </button>
+        </div>
+        <p>Home</p>
+        <p>Project</p>
+        <p>Work</p>
       </aside>
 
       <div class="container">
@@ -26,7 +42,9 @@
           Add a Task
         </button>
 
-        <section class="maincontents"><div>lkdasf</div></section>
+        <section class="maincontents">
+          <div>lkdasf</div>
+        </section>
 
         <dialog id="TodosDialog" aria-labelledby="dialog-title">
           <div class="dialog-content">
@@ -68,10 +86,14 @@
                 </select>
               </div>
 
-              <!-- <div class="form-group">
-                <label for="notes">Notes:</label>
-                <textarea id="notes" name="notes" rows="4"></textarea>
-              </div> -->
+              <div class="form-group">
+                <label for="projectType">Project Type:</label>
+                <select id="projectType" name="projectType" required>
+                  <option value="Inbox">Home</option>
+                  <option value="Today">Project</option>
+                  <option value="This week">Work</option>
+                </select>
+              </div>
 
               <input type="submit" value="Submit" />
             </form>
@@ -79,6 +101,7 @@
         </dialog>
       </div>
     </div>
+
     <footer>
       <p>&copy; 2024 Abel A.</p>
       <a

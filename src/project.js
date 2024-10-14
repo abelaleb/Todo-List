@@ -19,7 +19,7 @@ export const blankProjectLoad = () => {
 
   function renderProjects() {
     const projects = getStoredProjects();
-    const projectDropdown = document.getElementById("projectDropdown");
+    const projectDropdown = document.getElementById("projects");
   
     // Clear existing options
     projectDropdown.innerHTML = "";

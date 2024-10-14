@@ -40,10 +40,16 @@ export function renderTodos(todos) {
   });
 }
 
-export function openDialog(dialog) {
+export function openTodosDialog(dialog) {
   dialog.showModal();
 }
 
-export function closeDialog(dialog) {
+export function closeTodosDialog(dialog) {
+  dialog.close();
+}
+export function openProjectsDialog(dialog) {
+  dialog.showModal();
+}
+export function closeProjectsDialog(dialog) {
   dialog.close();
 }

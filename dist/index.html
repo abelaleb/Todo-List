@@ -22,15 +22,17 @@
           <h1>Main Projects</h1>
           <button
             id="addProjectsBtn"
-            aria-haspopup="dialog"
+            aria-haspopup="projectsDialog"
             aria-controls="ProjectsDialog"
           >
             +
           </button>
         </div>
-        <p id="Home" onclick="initializeProjects('Home')">Home</p>
-        <p id="Project" onclick="initializeProjects('Project')">Project</p>
-        <p id="Work" onclick="initializeProjects('Work')">Work</p>
+        <div id="projects">
+          <p id="Home" onclick="initializeProjects('Home')">Home</p>
+          <p id="Project" onclick="initializeProjects('Project')">Project</p>
+          <p id="Work" onclick="initializeProjects('Work')">Work</p>
+        </div>
       </aside>
 
       <div class="container">
@@ -41,9 +43,24 @@
         >
           Add a Task
         </button>
-
         <section class="maincontents"></section>
-
+        <dialog id="ProjectsDialog" aria-labelledby="projectsDialog">
+          <div id="project-dialog-content">
+            <div class="dialog-header">
+              <h2>Add a project</h2>
+              <button id="closeProjectsBtn" aria-label="Close projectsDialog">
+                &times;
+              </button>
+            </div>
+            <form action="Project-Todos">
+              <div>
+                <label for="name">Project Name: </label>
+                <input type="text" id="name" name="name" required />
+                <input type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
+        </dialog>
         <dialog id="TodosDialog" aria-labelledby="dialog-title">
           <div class="dialog-content">
             <div class="dialog-header">

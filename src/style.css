@@ -113,6 +113,11 @@ body {
   margin-bottom: 20px;
   font-size: 1.25rem;
 }
+#project-dialog-content{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
 .container {
   display: flex;
   flex-direction: column;

@@ -12,18 +12,13 @@ const dialog = document.getElementById("TodosDialog");
 const addTodosBtn = document.getElementById("addTodosBtn");
 const closeDialogBtn = document.getElementById("closeDialogBtn");
 
-const projectsDialog = document.getElementById("ProjectsDialog");
-const addProjectsDialogBtn = document.getElementById("addProjectsBtn");
-const closeProjectsDialogBtn = document.getElementById("closeProjectsBtn");
+// const projectsDialog = document.getElementById("ProjectsDialog");
+// const addProjectsDialogBtn = document.getElementById("addProjectsBtn");
+// const closeProjectsDialogBtn = document.getElementById("closeProjectsBtn");
 
 addTodosBtn.addEventListener("click", () => openTodosDialog(dialog));
 closeDialogBtn.addEventListener("click", () => closeTodosDialog(dialog));
-addProjectsDialogBtn.addEventListener("click", () =>
-  openProjectsDialog(projectsDialog)
-);
-closeProjectsDialogBtn.addEventListener("click", () =>
-  closeProjectsDialog(projectsDialog)
-);
+// addProjectsDialogBtn.addEventListener("click", () =>I
 
 document.getElementById("inbox").addEventListener("click", log);
 document.getElementById("today").addEventListener("click", log);

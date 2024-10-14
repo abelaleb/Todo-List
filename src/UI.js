@@ -4,6 +4,10 @@ export function renderTodos(todos) {
   const mainbar = document.querySelector(".maincontents");
   mainbar.innerHTML = "";
 
+  if (!todos || todos.length == 0) {
+    mainbar.innerHTML = "<p>No tasks available. Please add some tasks.</p>";
+    return;
+  } 
   // Sort Todos by priority
   const priorityOrder = {
     urgent: 1,
@@ -11,7 +15,6 @@ export function renderTodos(todos) {
     medium: 3,
     low: 4,
   };
-
   // Sort tasks based on priority
   todos.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 

@@ -21,12 +21,12 @@ export const blankTodosListLoad = () => {
     const todos = getStoredTodos();
     let filteredTodos;
 
-    if (projectType === "Inbox") {
+    if (projectType === "Home") {
       filteredTodos = todos;
-    } else if (projectType === "Today") {
+    } else if (projectType === "Work") {
       const today = new Date().toISOString().split("T")[0]; // Get current date in YYYY-MM-DD format
       filteredTodos = todos.filter((todo) => todo.dueDate === today);
-    } else if (projectType === "This Week") {
+    } else if (projectType === "Personal") {
       const today = new Date();
       const oneWeekLater = new Date(
         today.getFullYear(),
@@ -76,5 +76,5 @@ export function deleteTask(index, projectType) {
   const todos = JSON.parse(localStorage.getItem("todo-list") || "[]");
   todos.splice(index, 1); // Delete the specific todo
   localStorage.setItem("todo-list", JSON.stringify(todos)); // Update localStorage
-  initializeTodos(projectType); // Re-render todos based on the projectType
+  // initializeTodos(projectType); // Re-render todos based on the projectType
 }

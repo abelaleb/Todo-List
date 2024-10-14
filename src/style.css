@@ -92,7 +92,25 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.main-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#addProjectsBtn {
+  align-self: flex-start;
+  padding: .4rem .8rem;
+  font-size: var(--button-font-size);
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -154,8 +172,7 @@ body {
   background-color: #d32f2f;
 }
 
-#addTodosBtn,
-#addProjectsBtn {
+#addTodosBtn {
   align-self: flex-start;
   padding: 1rem 3rem;
   font-size: var(--button-font-size);

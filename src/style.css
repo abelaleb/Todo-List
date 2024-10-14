@@ -58,6 +58,7 @@ body {
 .sidebar {
   background-color: var(--sidebar-bg-color);
   padding: 1em;
+  padding-top: 20px;
   width: 250px;
   display: flex;
   flex-direction: column;

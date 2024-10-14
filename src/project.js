@@ -22,13 +22,13 @@ export const blankProjectLoad = () => {
     const projectDropdown = document.getElementById("projects");
   
     // Clear existing options
-    projectDropdown.innerHTML = "";
+    // projectDropdown.innerHTML = "";
   
     projects.forEach((project) => {
       const optionElement = document.createElement("option");
       optionElement.textContent = project;
       optionElement.value = project;
-      projectDropdown.appendChild(optionElement);
+      // projectDropdown.appendChild(optionElement);
     });
   }
   

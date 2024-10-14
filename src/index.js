@@ -9,13 +9,12 @@ import {
 import { blankProjectLoad } from "./project.js";
 
 const dialog = document.getElementById("TodosDialog");
-const projectsDialog = document.getElementById("ProjectsDialog")
 const addTodosBtn = document.getElementById("addTodosBtn");
 const closeDialogBtn = document.getElementById("closeDialogBtn");
+
+const projectsDialog = document.getElementById("ProjectsDialog");
 const addProjectsDialogBtn = document.getElementById("addProjectsBtn");
-const closeProjectsDialogBtn = document.getElementById(
-  "closeProjectsBtn"
-);
+const closeProjectsDialogBtn = document.getElementById("closeProjectsBtn");
 
 addTodosBtn.addEventListener("click", () => openTodosDialog(dialog));
 closeDialogBtn.addEventListener("click", () => closeTodosDialog(dialog));
@@ -25,6 +24,14 @@ addProjectsDialogBtn.addEventListener("click", () =>
 closeProjectsDialogBtn.addEventListener("click", () =>
   closeProjectsDialog(projectsDialog)
 );
+
+document.getElementById("inbox").addEventListener("click", log);
+document.getElementById("today").addEventListener("click", log);
+document.getElementById("upcoming").addEventListener("click", log);
+
+function log() {
+  console.log("works");
+}
 
 blankTodosListLoad();
 blankProjectLoad();

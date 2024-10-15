@@ -43,11 +43,11 @@ export function renderTodos(todos) {
   });
 }
 
-export function openTodosDialog(dialog) {
+export function openDialog(dialog) {
   dialog.showModal();
 }
 
-export function closeTodosDialog(dialog) {
+export function closeDialog(dialog) {
   dialog.close();
 }
 export function openProjectsDialog(dialog) {

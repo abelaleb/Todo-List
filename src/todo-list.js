@@ -9,39 +9,6 @@ export const blankTodosListLoad = () => {
     this.projectType = projectType;
   }
 
-  function getStoredTodos() {
-    return JSON.parse(localStorage.getItem("todo-list") || "[]");
-  }
-
-  function storeTodos(todos) {
-    localStorage.setItem("todo-list", JSON.stringify(todos));
-  }
-
-  function initializeTodos(projectType) {
-    const todos = getStoredTodos();
-    let filteredTodos;
-
-    if (projectType === "Home") {
-      filteredTodos = todos;
-    } else if (projectType === "Work") {
-      const today = new Date().toISOString().split("T")[0]; // Get current date in YYYY-MM-DD format
-      filteredTodos = todos.filter((todo) => todo.dueDate === today);
-    } else if (projectType === "Personal") {
-      const today = new Date();
-      const oneWeekLater = new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        today.getDate() + 7
-      );
-
-      filteredTodos = todos.filter((todo) => {
-        const todoDate = new Date(todo.dueDate);
-        return todoDate >= today && todoDate <= oneWeekLater;
-      });
-    }
-    renderTodos(filteredTodos);
-  }
-
   function addTaskToTodos(newTask) {
     const todos = getStoredTodos();
     todos.push(newTask);
@@ -50,7 +17,7 @@ export const blankTodosListLoad = () => {
     initializeTodos(newTask.projectType);
   }
   document.addEventListener("DOMContentLoaded", () => {
-    initializeTodos("Inbox");
+    initializeTodos("Home");
 
     const form = document.getElementById("Todos-form");
     form.addEventListener("submit", (event) => {
@@ -71,7 +38,27 @@ export const blankTodosListLoad = () => {
     });
   });
 };
+export function initializeTodos(projectType = "Home") {
+  const todos = getStoredTodos();
+  let filteredTodos;
 
+  if (projectType === "Home") {
+    filteredTodos = todos.filter((todo) => todo.projectType === "Home");
+  } else if (projectType === "Work") {
+    filteredTodos = todos.filter((todo) => todo.projectType === "Work");
+  } else if (projectType === "Personal") {
+    filteredTodos = todos.filter((todo) => todo.projectType === "Personal");
+  }
+
+  renderTodos(filteredTodos);
+}
+function getStoredTodos() {
+  return JSON.parse(localStorage.getItem("todo-list") || "[]");
+}
+
+function storeTodos(todos) {
+  localStorage.setItem("todo-list", JSON.stringify(todos));
+}
 export function deleteTask(index, projectType) {
   const todos = JSON.parse(localStorage.getItem("todo-list") || "[]");
   todos.splice(index, 1); // Delete the specific todo

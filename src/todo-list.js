@@ -10,12 +10,14 @@ function storeTodos(todos) {
 
 export const blankTodosListLoad = () => {
   function task(title, description, date, priority, projectType) {
+    this.id = Date.now(); // Using timestamp as unique ID
     this.title = title;
     this.description = description;
     this.date = date;
     this.priority = priority;
     this.projectType = projectType;
   }
+  
 
   function addTaskToTodos(newTask) {
     const todos = getStoredTodos();
@@ -24,7 +26,7 @@ export const blankTodosListLoad = () => {
     renderTodos(todos);
   }
   document.addEventListener("DOMContentLoaded", () => {
-    initializeTodos("Home");
+    initializeTodos("All");
 
     const form = document.getElementById("Todos-form");
     form.addEventListener("submit", (event) => {
@@ -63,9 +65,13 @@ export function initializeTodos(projectType = "Home") {
   renderTodos(filteredTodos);
 }
 
-export function deleteTask(index, projectType) {
-  const todos = JSON.parse(localStorage.getItem("todo-list") || "[]");
-  todos.splice(index, 1); // Delete the specific todo
-  localStorage.setItem("todo-list", JSON.stringify(todos)); // Update localStorage
+export function deleteTask(taskId, projectType) {
+  let todos = getStoredTodos();
+
+  todos = todos.filter((todo) => todo.id !== taskId);
+
+  storeTodos(todos);
+
   initializeTodos(projectType);
 }
+

@@ -7,7 +7,7 @@ export function renderTodos(todos) {
   if (!todos || todos.length == 0) {
     mainbar.innerHTML = "<p>No tasks available. Please add some tasks.</p>";
     return;
-  } 
+  }
   // Sort Todos by priority
   const priorityOrder = {
     urgent: 1,
@@ -15,10 +15,11 @@ export function renderTodos(todos) {
     medium: 3,
     low: 4,
   };
+
   // Sort tasks based on priority
   todos.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
-  todos.forEach((todo, index) => {
+  todos.forEach((todo) => {
     const todoElement = document.createElement("div");
     todoElement.classList.add("todo-item", todo.priority.toLowerCase());
 
@@ -26,7 +27,7 @@ export function renderTodos(todos) {
       <h3>${todo.title}</h3>
       <p>${todo.description}</p>
       <p>${todo.date}</p>
-      <button class="delete-btn" data-index="${index}">Delete</button>
+      <button class="delete-btn" data-id="${todo.id}" data-project-type="${todo.projectType}">Delete</button>
     `;
 
     mainbar.appendChild(todoElement);
@@ -36,12 +37,13 @@ export function renderTodos(todos) {
   const deleteButtons = document.querySelectorAll(".delete-btn");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-      const index = event.target.getAttribute("data-index");
+      const taskId = event.target.getAttribute("data-id");
       const projectType = event.target.getAttribute("data-project-type"); // Get the project type to pass to deleteTask
-      deleteTask(index, projectType); // Ensure correct deletion of task by projectType
+      deleteTask(Number(taskId), projectType); // Ensure correct deletion of task by projectType
     });
   });
 }
+
 
 export function openDialog(dialog) {
   dialog.showModal();

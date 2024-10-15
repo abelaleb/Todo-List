@@ -16,7 +16,8 @@ addTodosBtn.addEventListener("click", () => openDialog(dialog));
 closeDialogBtn.addEventListener("click", () => closeDialog(dialog));
 // addProjectsDialogBtn.addEventListener("click", () =>I
 
-document.getElementById("inbox").addEventListener("click", initializeTodos);
+document.getElementById("all").addEventListener("click", ()=>{console.log("all");
+});
 document.getElementById("today").addEventListener("click", log);
 document.getElementById("upcoming").addEventListener("click", log);
 console.log(initializeTodos());

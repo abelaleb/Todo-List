@@ -25,7 +25,7 @@ export const blankTodosListLoad = () => {
     // initializeTodos(newTask.projectType);
   }
   document.addEventListener("DOMContentLoaded", () => {
-    initializeTodos("Home");
+    initializeTodos("Personal");
 
     const form = document.getElementById("Todos-form");
     form.addEventListener("submit", (event) => {
@@ -65,5 +65,5 @@ export function deleteTask(index, projectType) {
   const todos = JSON.parse(localStorage.getItem("todo-list") || "[]");
   todos.splice(index, 1); // Delete the specific todo
   localStorage.setItem("todo-list", JSON.stringify(todos)); // Update localStorage
-  // initializeTodos(projectType); // Re-render todos based on the projectType
+  initializeTodos(projectType);
 }

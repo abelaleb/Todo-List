@@ -16,8 +16,10 @@ addTodosBtn.addEventListener("click", () => openDialog(dialog));
 closeDialogBtn.addEventListener("click", () => closeDialog(dialog));
 // addProjectsDialogBtn.addEventListener("click", () =>I
 
-document.getElementById("all").addEventListener("click", ()=>{console.log("all");
+document.getElementById("all").addEventListener("click", () => {
+  initializeTodos("All"); // Call initializeTodos with "All" to display all tasks
 });
+
 document.getElementById("today").addEventListener("click", log);
 document.getElementById("upcoming").addEventListener("click", log);
 console.log(initializeTodos());

@@ -50,7 +50,10 @@ export function initializeTodos(projectType = "Home") {
   const todos = getStoredTodos();
   let filteredTodos;
 
-  if (projectType === "Home") {
+  if (projectType === "All") {
+    // Display all Todos regardless of the projectType
+    filteredTodos = todos;
+  } else if (projectType === "Home") {
     filteredTodos = todos.filter((todo) => todo.projectType === "Home");
   } else if (projectType === "Work") {
     filteredTodos = todos.filter((todo) => todo.projectType === "Work");

@@ -22,10 +22,9 @@ export const blankTodosListLoad = () => {
     todos.push(newTask);
     storeTodos(todos);
     renderTodos(todos);
-    // initializeTodos(newTask.projectType);
   }
   document.addEventListener("DOMContentLoaded", () => {
-    initializeTodos("Personal");
+    initializeTodos("Home");
 
     const form = document.getElementById("Todos-form");
     form.addEventListener("submit", (event) => {

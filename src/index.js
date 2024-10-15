@@ -8,13 +8,8 @@ const dialog = document.getElementById("TodosDialog");
 const addTodosBtn = document.getElementById("addTodosBtn");
 const closeDialogBtn = document.getElementById("closeDialogBtn");
 
-// const projectsDialog = document.getElementById("ProjectsDialog");
-// const addProjectsDialogBtn = document.getElementById("addProjectsBtn");
-// const closeProjectsDialogBtn = document.getElementById("closeProjectsBtn");
-
 addTodosBtn.addEventListener("click", () => openDialog(dialog));
 closeDialogBtn.addEventListener("click", () => closeDialog(dialog));
-// addProjectsDialogBtn.addEventListener("click", () =>I
 
 document.getElementById("all").addEventListener("click", () => {
   initializeTodos("All"); // Call initializeTodos with "All" to display all tasks
@@ -22,8 +17,16 @@ document.getElementById("all").addEventListener("click", () => {
 
 document.getElementById("today").addEventListener("click", log);
 document.getElementById("upcoming").addEventListener("click", log);
-console.log(initializeTodos());
 
+document.getElementById("Home").addEventListener("click", () => {
+  initializeTodos("Home");
+});
+document.getElementById("Personal").addEventListener("click", () => {
+  initializeTodos("Personal");
+});
+document.getElementById("Work").addEventListener("click", () => {
+  initializeTodos("Work");
+});
 function log() {
   console.log("works");
 }

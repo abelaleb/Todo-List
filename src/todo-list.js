@@ -1,5 +1,13 @@
 import { renderTodos, openDialog, closeDialog } from "./UI.js";
 
+function getStoredTodos() {
+  return JSON.parse(localStorage.getItem("todo-list") || "[]");
+}
+
+function storeTodos(todos) {
+  localStorage.setItem("todo-list", JSON.stringify(todos));
+}
+
 export const blankTodosListLoad = () => {
   function task(title, description, date, priority, projectType) {
     this.title = title;
@@ -14,7 +22,7 @@ export const blankTodosListLoad = () => {
     todos.push(newTask);
     storeTodos(todos);
     renderTodos(todos);
-    initializeTodos(newTask.projectType);
+    // initializeTodos(newTask.projectType);
   }
   document.addEventListener("DOMContentLoaded", () => {
     initializeTodos("Home");
@@ -52,13 +60,7 @@ export function initializeTodos(projectType = "Home") {
 
   renderTodos(filteredTodos);
 }
-function getStoredTodos() {
-  return JSON.parse(localStorage.getItem("todo-list") || "[]");
-}
 
-function storeTodos(todos) {
-  localStorage.setItem("todo-list", JSON.stringify(todos));
-}
 export function deleteTask(index, projectType) {
   const todos = JSON.parse(localStorage.getItem("todo-list") || "[]");
   todos.splice(index, 1); // Delete the specific todo

@@ -60,7 +60,7 @@ export function initializeTodos(projectType = "All") {
 
   if (projectType === "All") {
     // Display all Todos regardless of the projectType
-    filteredTodos = todos;
+    filteredTodos = todos.filter((todo) => !todo.completed);
   } else if (projectType === "Today") {
     filteredTodos = todos.filter((todo) => isToday(new Date(todo.date)));
   } else if (projectType === "Upcoming") {
@@ -98,6 +98,6 @@ export function toggleTaskCompleted(taskId) {
   if (currentProjectType === "completed") {
     initializeTodos("completed");
   } else {
-     initializeTodos(currentProjectType);
+    initializeTodos(currentProjectType);
   }
 }

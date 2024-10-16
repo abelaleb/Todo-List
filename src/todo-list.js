@@ -56,7 +56,6 @@ export function initializeTodos(projectType = "All") {
 
   const todos = getStoredTodos();
   let filteredTodos;
-
   const today = new Date();
 
   if (projectType === "All") {
@@ -67,11 +66,11 @@ export function initializeTodos(projectType = "All") {
   } else if (projectType === "Upcoming") {
     filteredTodos = todos.filter((todo) => isAfter(new Date(todo.date), today));
   } else if (projectType === "completed") {
-    filteredTodos = todos.filter((todo) => {
-      todo.completed;
-    });
+    filteredTodos = todos.filter((todo) => todo.completed === true);
   } else {
-    filteredTodos = todos.filter((todo) => todo.projectType === projectType);
+    filteredTodos = todos.filter(
+      (todo) => todo.projectType === projectType && !todo.completed
+    );
   }
 
   renderTodos(filteredTodos);
@@ -87,16 +86,18 @@ export function deleteTask(taskId) {
   initializeTodos(currentProjectType);
 }
 export function toggleTaskCompleted(taskId) {
-  console.log("checked");
-  
   let todos = getStoredTodos();
   todos = todos.map((todo) => {
     if (todo.id === taskId) {
-      todo.completed = !todo.completed; 
+      todo.completed = !todo.completed;
     }
     return todo;
   });
-  storeTodos(todos); 
-  initializeTodos(currentProjectType); 
+  storeTodos(todos);
+  // Check the current section and re-render the correct todos
+  if (currentProjectType === "completed") {
+    initializeTodos("completed");
+  } else {
+     initializeTodos(currentProjectType);
+  }
 }
-

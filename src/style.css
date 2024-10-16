@@ -135,21 +135,26 @@ body {
   flex-direction: column;
   gap: 1rem;
 }
-.todoElement{
- display: flex;
- align-items: center;
- flex-direction: column;
- justify-content: start;
+.todoElement {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: start;
 }
-.todoElement-top{
-display: flex;
-justify-content: space-between;
+.todoElement-top {
+  display: flex;
+  justify-content: space-between;
 }
-.todoElement-bottom{
-display: flex;
-justify-content: start;
-align-items: center;
-gap: 1rem;
+.todoElement-bottom {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.completed-task ,.task-title {
+  text-decoration: line-through;
+  color: gray;
 }
 
 .todo-item {

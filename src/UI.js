@@ -25,13 +25,21 @@ export function renderTodos(todos) {
     todoElement.classList.add("todo-item", todo.priority.toLowerCase());
 
     todoElement.innerHTML = `
-      <h3>${todo.title}</h3>
-      <p>${todo.description}</p>
-      <p style="color: gray">${format(todo.date, "MMM dd ")}</p>
-      <button class="delete-btn" data-id="${todo.id}" data-project-type="${
+      <div class="todoElement-top">
+      <h3>${
+        todo.title
+      }</h3> <input type="checkbox" class="complete-checkbox" data-id="${
+      todo.id
+    }" ${todo.completed ? "checked" : ""}> 
+      </div>
+    <div>
+    <div class="todoElement-bottom">
+   <p>${todo.description}</p>
+   <p style="color: gray">${format(todo.date, "MMM dd ")}</p>
+   <button class="delete-btn" data-id="${todo.id}" data-project-type="${
       todo.projectType
     }">Delete</button>
-    `;
+    </div>`;
 
     mainbar.appendChild(todoElement);
   });

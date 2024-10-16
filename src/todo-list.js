@@ -16,6 +16,7 @@ export const blankTodosListLoad = () => {
     this.date = date;
     this.priority = priority;
     this.projectType = projectType;
+    this.completed = false;
   }
 
   function addTaskToTodos(newTask) {
@@ -65,6 +66,10 @@ export function initializeTodos(projectType = "All") {
     filteredTodos = todos.filter((todo) => isToday(new Date(todo.date)));
   } else if (projectType === "Upcoming") {
     filteredTodos = todos.filter((todo) => isAfter(new Date(todo.date), today));
+  } else if (projectType === "completed") {
+    filteredTodos = todos.filter((todo) => {
+      todo.completed;
+    });
   } else {
     filteredTodos = todos.filter((todo) => todo.projectType === projectType);
   }
@@ -79,5 +84,16 @@ export function deleteTask(taskId) {
 
   storeTodos(todos);
 
+  initializeTodos(currentProjectType);
+}
+export function toggleTaskCompleted(taskID) {
+  let todos = getStoredTodos();
+  todos = todos.map((todo) => {
+    if (todo.id === taskID) {
+      todo.completed = !todo.completed;
+    }
+    return todo;
+  });
+  storeTodos(updatedTodos);
   initializeTodos(currentProjectType);
 }

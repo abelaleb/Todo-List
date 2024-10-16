@@ -21,6 +21,10 @@ document.getElementById("today").addEventListener("click", () => {
 document.getElementById("upcoming").addEventListener("click", () => {
   initializeTodos("Upcoming");
 });
+document.getElementById("completed").addEventListener("click",()=>{
+  initializeTodos("completed")
+  
+})
 
 document.getElementById("Home").addEventListener("click", () => {
   initializeTodos("Home");

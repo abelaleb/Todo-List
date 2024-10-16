@@ -140,6 +140,9 @@ body {
   padding: 1rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 .todo-item.urgent {

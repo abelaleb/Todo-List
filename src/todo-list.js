@@ -17,7 +17,6 @@ export const blankTodosListLoad = () => {
     this.priority = priority;
     this.projectType = projectType;
   }
-  
 
   function addTaskToTodos(newTask) {
     const todos = getStoredTodos();
@@ -47,31 +46,36 @@ export const blankTodosListLoad = () => {
     });
   });
 };
-export function initializeTodos(projectType = "Home") {
+let currentProjectType = "All";
+export function initializeTodos(projectType = "All") {
+  currentProjectType = projectType;
+
   const todos = getStoredTodos();
   let filteredTodos;
 
   if (projectType === "All") {
     // Display all Todos regardless of the projectType
     filteredTodos = todos;
-  } else if (projectType === "Home") {
-    filteredTodos = todos.filter((todo) => todo.projectType === "Home");
-  } else if (projectType === "Work") {
-    filteredTodos = todos.filter((todo) => todo.projectType === "Work");
-  } else if (projectType === "Personal") {
-    filteredTodos = todos.filter((todo) => todo.projectType === "Personal");
+  } else {
+    filteredTodos = todos.filter((todo) => todo.projectType === projectType);
   }
+  // if (projectType === "Home") {
+  //   filteredTodos = todos.filter((todo) => todo.projectType === "Home");
+  // } else if (projectType === "Work") {
+  //   filteredTodos = todos.filter((todo) => todo.projectType === "Work");
+  // } else if (projectType === "Personal") {
+  //   filteredTodos = todos.filter((todo) => todo.projectType === "Personal");
+  // }
 
   renderTodos(filteredTodos);
 }
 
-export function deleteTask(taskId, projectType) {
+export function deleteTask(taskId) {
   let todos = getStoredTodos();
 
   todos = todos.filter((todo) => todo.id !== taskId);
 
   storeTodos(todos);
 
-  initializeTodos(projectType);
+  initializeTodos(currentProjectType);
 }
-

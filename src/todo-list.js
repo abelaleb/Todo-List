@@ -59,13 +59,6 @@ export function initializeTodos(projectType = "All") {
   } else {
     filteredTodos = todos.filter((todo) => todo.projectType === projectType);
   }
-  // if (projectType === "Home") {
-  //   filteredTodos = todos.filter((todo) => todo.projectType === "Home");
-  // } else if (projectType === "Work") {
-  //   filteredTodos = todos.filter((todo) => todo.projectType === "Work");
-  // } else if (projectType === "Personal") {
-  //   filteredTodos = todos.filter((todo) => todo.projectType === "Personal");
-  // }
 
   renderTodos(filteredTodos);
 }

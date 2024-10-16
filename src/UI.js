@@ -20,6 +20,8 @@ export function renderTodos(todos) {
   todos.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
   todos.forEach((todo) => {
+    console.log(todo.id);
+    
     const todoElement = document.createElement("div");
     todoElement.classList.add("todo-item", todo.priority.toLowerCase());
 
@@ -38,8 +40,8 @@ export function renderTodos(todos) {
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       const taskId = event.target.getAttribute("data-id");
-      const projectType = event.target.getAttribute("data-project-type"); // Get the project type to pass to deleteTask
-      deleteTask(Number(taskId), projectType); // Ensure correct deletion of task by projectType
+      // const projectType = event.target.getAttribute("data-project-type"); // Get the project type to pass to deleteTask
+      deleteTask(Number(taskId));
     });
   });
 }

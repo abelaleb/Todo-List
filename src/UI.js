@@ -36,7 +36,7 @@ export function renderTodos(todos) {
       </div>
     
       <div class="todoElement-bottom">
-        <p>${todo.description}</p>
+        <p >${todo.description}</p>
         <p style="color: gray">${format(todo.date, "MMM dd")}</p>
         <button class="delete-btn" data-id="${todo.id}" data-project-type="${
       todo.projectType

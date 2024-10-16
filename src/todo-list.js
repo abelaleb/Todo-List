@@ -86,14 +86,17 @@ export function deleteTask(taskId) {
 
   initializeTodos(currentProjectType);
 }
-export function toggleTaskCompleted(taskID) {
+export function toggleTaskCompleted(taskId) {
+  console.log("checked");
+  
   let todos = getStoredTodos();
   todos = todos.map((todo) => {
-    if (todo.id === taskID) {
-      todo.completed = !todo.completed;
+    if (todo.id === taskId) {
+      todo.completed = !todo.completed; 
     }
     return todo;
   });
-  storeTodos(updatedTodos);
-  initializeTodos(currentProjectType);
+  storeTodos(todos); 
+  initializeTodos(currentProjectType); 
 }
+

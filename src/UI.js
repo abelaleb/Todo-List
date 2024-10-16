@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { deleteTask } from "./todo-list";
+import { deleteTask, toggleTaskCompleted } from "./todo-list";
 
 export function renderTodos(todos) {
   const mainbar = document.querySelector(".maincontents");
@@ -32,7 +32,7 @@ export function renderTodos(todos) {
       todo.id
     }" ${todo.completed ? "checked" : ""}> 
       </div>
-    <div>
+    
     <div class="todoElement-bottom">
    <p>${todo.description}</p>
    <p style="color: gray">${format(todo.date, "MMM dd ")}</p>
@@ -49,8 +49,14 @@ export function renderTodos(todos) {
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       const taskId = event.target.getAttribute("data-id");
-      // const projectType = event.target.getAttribute("data-project-type"); // Get the project type to pass to deleteTask
       deleteTask(Number(taskId));
+    });
+  });
+  const completeCheckboxes = document.querySelectorAll(".complete-checkbox");
+  completeCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change",(event) => {
+      const taskId = event.target.getAttribute("data-id");
+      toggleTaskCompleted(Number(taskId)); //call the toggle function
     });
   });
 }

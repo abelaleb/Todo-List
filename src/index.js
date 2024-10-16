@@ -15,8 +15,12 @@ document.getElementById("all").addEventListener("click", () => {
   initializeTodos("All"); // Call initializeTodos with "All" to display all tasks
 });
 
-document.getElementById("today").addEventListener("click", log);
-document.getElementById("upcoming").addEventListener("click", log);
+document.getElementById("today").addEventListener("click", () => {
+  console.log("Today");
+});
+document.getElementById("upcoming").addEventListener("click", () => {
+  console.log("Upcoming");
+});
 
 document.getElementById("Home").addEventListener("click", () => {
   initializeTodos("Home");
@@ -27,9 +31,6 @@ document.getElementById("Personal").addEventListener("click", () => {
 document.getElementById("Work").addEventListener("click", () => {
   initializeTodos("Work");
 });
-function log() {
-  console.log("works");
-}
 
 blankTodosListLoad();
 blankProjectLoad();

@@ -1,5 +1,5 @@
 import { renderTodos, openDialog, closeDialog } from "./UI.js";
-
+import { format, isToday, isAfter } from "date-fns";
 function getStoredTodos() {
   return JSON.parse(localStorage.getItem("todo-list") || "[]");
 }
@@ -24,6 +24,7 @@ export const blankTodosListLoad = () => {
     storeTodos(todos);
     renderTodos(todos);
   }
+
   document.addEventListener("DOMContentLoaded", () => {
     initializeTodos("All");
 
@@ -46,16 +47,24 @@ export const blankTodosListLoad = () => {
     });
   });
 };
+
 let currentProjectType = "All";
+
 export function initializeTodos(projectType = "All") {
   currentProjectType = projectType;
 
   const todos = getStoredTodos();
   let filteredTodos;
 
+  const today = new Date();
+
   if (projectType === "All") {
     // Display all Todos regardless of the projectType
     filteredTodos = todos;
+  } else if (projectType === "Today") {
+    filteredTodos = todos.filter((todo) => isToday(new Date(todo.date)));
+  } else if (projectType === "Upcoming") {
+    filteredTodos = todos.filter((todo) => isAfter(new Date(todo.date), today));
   } else {
     filteredTodos = todos.filter((todo) => todo.projectType === projectType);
   }

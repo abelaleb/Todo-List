@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { deleteTask } from "./todo-list";
 
 export function renderTodos(todos) {
@@ -20,16 +21,16 @@ export function renderTodos(todos) {
   todos.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
   todos.forEach((todo) => {
-    console.log(todo.id);
-    
     const todoElement = document.createElement("div");
     todoElement.classList.add("todo-item", todo.priority.toLowerCase());
 
     todoElement.innerHTML = `
       <h3>${todo.title}</h3>
       <p>${todo.description}</p>
-      <p>${todo.date}</p>
-      <button class="delete-btn" data-id="${todo.id}" data-project-type="${todo.projectType}">Delete</button>
+      <p style="color: gray">${format(todo.date, "MMM dd ")}</p>
+      <button class="delete-btn" data-id="${todo.id}" data-project-type="${
+      todo.projectType
+    }">Delete</button>
     `;
 
     mainbar.appendChild(todoElement);
@@ -45,7 +46,6 @@ export function renderTodos(todos) {
     });
   });
 }
-
 
 export function openDialog(dialog) {
   dialog.showModal();

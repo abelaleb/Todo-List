@@ -16,10 +16,10 @@ document.getElementById("all").addEventListener("click", () => {
 });
 
 document.getElementById("today").addEventListener("click", () => {
-  console.log("Today");
+  initializeTodos("Today")
 });
 document.getElementById("upcoming").addEventListener("click", () => {
-  console.log("Upcoming");
+  initializeTodos("Upcoming");
 });
 
 document.getElementById("Home").addEventListener("click", () => {
